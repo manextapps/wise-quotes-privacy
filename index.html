@@ -88,7 +88,7 @@
       <p>Wise Quotes uses the Google Mobile Ads SDK (Google AdMob) to show ads and Google's User Messaging Platform (UMP) to request ad consent where required. The app shows:</p>
       <ul>
         <li><strong>A banner ad</strong> at the bottom of the browse, category, search and favourites screens, clear of the quotes and the buttons. There is no banner on the quote of the day screen and no ads in the widget or the notification.</li>
-        <li><strong>Full screen (interstitial) ads</strong>, at most once every few categories or authors you open and at least two minutes apart. Never in the first minutes after you first open the app, and never right after you share a quote.</li>
+        <li><strong>A full screen (interstitial) ad</strong>, at most once per visit, only when you leave a topic or thinker list after reading some quotes there. Never when you open the app, never when you arrive from the widget or the notification, never in the first minutes after you first open the app, and never right after you share a quote.</li>
       </ul>
       <p>There are no rewarded ads. Both kinds of ads stop after the remove ads purchase.</p>
       <h3>What Google's ad SDK collects</h3>
@@ -132,12 +132,12 @@
       <p>Wise Quotes does not ask you for runtime permissions such as location, camera, microphone, contacts or storage. If you turn on the daily quote notification, Android asks you to allow notifications; you can say no and the rest of the app works the same. The installed app includes the following permissions. The first two are the app's own, the others are added by Google's libraries:</p>
       <ul>
         <li><strong>Notifications</strong> (<code>POST_NOTIFICATIONS</code>): shows the daily quote at the time you choose, only if you turn the reminder on.</li>
-        <li><strong>Run at startup</strong> (<code>RECEIVE_BOOT_COMPLETED</code>): after your phone restarts, the app sets the daily reminder again if it is on. Nothing else runs at startup.</li>
+        <li><strong>Run at startup</strong> (<code>RECEIVE_BOOT_COMPLETED</code>): after your phone restarts, the app sets the daily reminder again if it is on and refreshes the home screen widget if you added one. Nothing else runs at startup.</li>
         <li><strong>Internet access and network state</strong>: to load ads, the consent form and the purchase screen.</li>
         <li><strong>Advertising ID</strong> (<code>com.google.android.gms.permission.AD_ID</code>): lets the ad SDK read the advertising ID.</li>
         <li><strong>Android ad services</strong> (<code>ACCESS_ADSERVICES_AD_ID</code>, <code>ACCESS_ADSERVICES_ATTRIBUTION</code>, <code>ACCESS_ADSERVICES_TOPICS</code>): let the ad SDK use Android's Privacy Sandbox advertising features where the device supports them.</li>
         <li><strong>Google Play billing</strong> (<code>com.android.vending.BILLING</code>): lets the app offer the optional purchase.</li>
-        <li><strong>Wake lock and foreground service</strong>: required by the Android WorkManager library that the app and the ad SDK use for background tasks. Wise Quotes itself does not run a foreground service.</li>
+        <li><strong>Wake lock and foreground service</strong>: required by the Android WorkManager library that the ad SDK uses for background tasks. The daily reminder uses Android's alarm service instead. Wise Quotes itself does not run a foreground service.</li>
       </ul>
     </section>
 
